@@ -21,6 +21,8 @@ class Forward_list{
      public:
      Forward_list();
      Forward_list(Forward_list<T>&&);
+     Forward_list(const Forward_list<T>&);
+     Forward_list<T>& operator = (const Forward_list&);
      Forward_list<T>& operator=(Forward_list<T>&&);
      ~Forward_list();
      void clear();
