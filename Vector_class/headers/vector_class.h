@@ -43,6 +43,13 @@ public:
 	
 };
 
+template<typename T>
+std::ostream& operator<<(std::ostream& out , const Vector<T>& rhv);
+
+template<typename T>
+std::istream& operator<<(std::istream& in , const Vector<T>& rhv);
+
+
 #include "vector_class.hpp"
 #endif
 
