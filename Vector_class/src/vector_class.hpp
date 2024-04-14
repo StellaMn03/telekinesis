@@ -247,5 +247,12 @@ void Vector<T>::insert(SizeType index, T val) {
     delete[] v_arr;
     v_arr = tmp;
 }
+template<typename T>
+std::ostream& operator<<(std::ostream& os , const Vector<T>& rhv){
+    for(size_t i = 0; i < rhv.Size(); ++i){
+        os << rhv[i] << " ";
+    }
+    return os; 
+}
 
 #endif
