@@ -71,6 +71,17 @@ const Vector<T>& Vector<T>::operator=(const Vector<T>& rhv){
 	return *this;
 }
 template<typename T>
+const Vector<T>& Vector<T>::operator=( Vector <T>&& rhv){
+	if(this!=&rhv){
+	this->clear();
+	v_size = rhv.v_size;
+	v_ capacity = rhv.v_capacity;
+	v_arr = rhv.v_arr;
+	rhv.v_arr = nullptr;
+	}
+	return *this;
+}
+template<typename T>
 Vector<T>::~Vector()
 {
    delete[] v_arr;
