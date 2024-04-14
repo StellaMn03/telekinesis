@@ -22,6 +22,8 @@ public:
     Vector(SizeType n);
     Vector(SizeType n, const T&);
     Vector(const Vector<T>&);
+    Vector(Vector<T>&& other);
+
     ~Vector();
     const Vector<T>& operator=(const Vector<T>&);
     T& front();
