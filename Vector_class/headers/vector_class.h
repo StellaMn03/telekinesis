@@ -26,6 +26,7 @@ public:
 
     ~Vector();
     const Vector<T>& operator=(const Vector<T>&);
+    const Vector <T>& operator=(Vector <T>&& rhv);
     T& front();
     T& back();
     T& at(SizeType);
