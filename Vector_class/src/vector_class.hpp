@@ -248,11 +248,23 @@ void Vector<T>::insert(SizeType index, T val) {
     v_arr = tmp;
 }
 template<typename T>
-std::ostream& operator<<(std::ostream& os , const Vector<T>& rhv){
+std::ostream& operator<<(std::ostream& out , const Vector<T>& rhv){
     for(size_t i = 0; i < rhv.Size(); ++i){
-        os << rhv[i] << " ";
+        out << rhv[i] << " ";
     }
-    return os; 
+    return out; 
 }
 
+template<typename T>
+std::istream& operator>>(std::istream& in, Vector<T>& rhv) {
+    rhv.clear(); 
+
+    T element;
+    while (in >> element) {  
+        rhv.push_back(element);
+    }
+    in.clear();  // to clear error flags
+
+    return in;
+}
 #endif
