@@ -42,6 +42,18 @@ Vector<T>::Vector(const Vector<T>& rhv)
 		v_arr[i] = rhv.v_arr[i];
 	}
 }
+template<typename T>
+Vector<T>::Vector(Vector<T>&& other) 
+: v_size(other.v_size)
+, v_capacity(other.v_capacity)
+, v_arr(other.v_arr) 
+{
+    
+    other.v_arr = nullptr;  
+    other.v_size = 0;
+    other.v_capacity = 0;
+}
+
 
 template<typename T>
 const Vector<T>& Vector<T>::operator=(const Vector<T>& rhv){
