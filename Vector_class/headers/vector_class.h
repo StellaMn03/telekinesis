@@ -21,11 +21,11 @@ public:
     Vector();
     Vector(SizeType n);
     Vector(SizeType n, const T&);
-    Vector(const Vector<T>&);
+    Vector(const Vector<T>& rhv);
     Vector(Vector<T>&& other);
 
     ~Vector();
-    const Vector<T>& operator=(const Vector<T>&);
+    const Vector<T>& operator=(const Vector<T>& rhv);
     const Vector <T>& operator=(Vector <T>&& rhv);
     T& front();
     T& back();
