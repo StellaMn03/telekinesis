@@ -110,6 +110,7 @@ T& Vector<T>::at(SizeType index)
 template<typename T>
 void Vector<T>::realloc_vect()
 {
+	v_capacity*=2;
     T* tmp = new T[v_capacity];
 
     for(SizeType i = 0; i < v_size; ++i)
