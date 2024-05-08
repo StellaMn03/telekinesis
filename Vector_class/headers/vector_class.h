@@ -21,12 +21,9 @@ public:
     Vector();
     Vector(SizeType n);
     Vector(SizeType n, const T&);
-    Vector(const Vector<T>& rhv);
-    Vector(Vector<T>&& other);
-
+    Vector(const Vector<T>&);
     ~Vector();
-    const Vector<T>& operator=(const Vector<T>& rhv);
-    const Vector <T>& operator=(Vector <T>&& rhv);
+    const Vector<T>& operator=(const Vector<T>&);
     T& front();
     T& back();
     T& at(SizeType);
@@ -40,15 +37,16 @@ public:
     void resize(SizeType, const T&);
     void remove(SizeType);
     void insert(SizeType, ValueType);
+public: 
+
+    bool operator==(const Vector<T>& other) const;
+    bool operator!=(const Vector<T>& other) const;
+    bool operator<(const Vector<T>& other) const;
+    bool operator<=(const Vector<T>& other) const;
+    bool operator>(const Vector<T>& other) const;
+    bool operator>=(const Vector<T>& other) const;
 	
 };
-
-template<typename T>
-std::ostream& operator<<(std::ostream& out , const Vector<T>& rhv);
-
-template<typename T>
-std::istream& operator<<(std::istream& in , const Vector<T>& rhv);
-
 
 #include "vector_class.hpp"
 #endif
