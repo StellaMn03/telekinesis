@@ -42,18 +42,6 @@ Vector<T>::Vector(const Vector<T>& rhv)
 		v_arr[i] = rhv.v_arr[i];
 	}
 }
-template<typename T>
-Vector<T>::Vector(Vector<T>&& other) 
-: v_size(other.v_size)
-, v_capacity(other.v_capacity)
-, v_arr(other.v_arr) 
-{
-    
-    other.v_arr = nullptr;  
-    other.v_size = 0;
-    other.v_capacity = 0;
-}
-
 
 template<typename T>
 const Vector<T>& Vector<T>::operator=(const Vector<T>& rhv){
@@ -67,17 +55,6 @@ const Vector<T>& Vector<T>::operator=(const Vector<T>& rhv){
 		for(SizeType i = 0; i < v_size; ++i){
 			v_arr[i] = rhv.v_arr[i];
 		}
-	}
-	return *this;
-}
-template<typename T>
-const Vector<T>& Vector<T>::operator=( Vector <T>&& rhv){
-	if(this!=&rhv){
-	this->clear();
-	v_size = rhv.v_size;
-	v_ capacity = rhv.v_capacity;
-	v_arr = rhv.v_arr;
-	rhv.v_arr = nullptr;
 	}
 	return *this;
 }
@@ -110,7 +87,6 @@ T& Vector<T>::at(SizeType index)
 template<typename T>
 void Vector<T>::realloc_vect()
 {
-	v_capacity*=2;
     T* tmp = new T[v_capacity];
 
     for(SizeType i = 0; i < v_size; ++i)
@@ -249,23 +225,49 @@ void Vector<T>::insert(SizeType index, T val) {
     v_arr = tmp;
 }
 template<typename T>
-std::ostream& operator<<(std::ostream& out , const Vector<T>& rhv){
-    for(size_t i = 0; i < rhv.Size(); ++i){
-        out << rhv[i] << " ";
+bool Vector<T>::operator==(const Vector& other) const {
+    if (v_size != other.v_size) {
+        return false;
     }
-    return out; 
+    for (SizeType i = 0; i < v_size; ++i) {
+        if (v_arr[i] != other.v_arr[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+template<typename T>
+bool Vector<T>::operator!=(const Vector& other) const{
+    return !(*this == other);
 }
 
 template<typename T>
-std::istream& operator>>(std::istream& in, Vector<T>& rhv) {
-    rhv.clear(); 
-
-    T element;
-    while (in >> element) {  
-        rhv.push_back(element);
-    }
-    in.clear();  // to clear error flags
-
-    return in;
+bool Vector<T>::operator<(const Vector& other) const {
+	if(v_size < other.v_size)
+		return true;
+    return false;
 }
+
+template<typename T>
+bool Vector<T>::operator<=(const Vector& other) const {
+       if(v_size < other.v_size || this.v_size = other.v_size)
+		   return true;
+	   return false;	   
+	     
+}
+template<typename T>
+bool Vector<T>::operator>(const Vector& other) const {
+	if(v_size > other.v_size)
+		return true;
+	return false;
+}
+
+template<typename T>
+bool Vector<T>::operator>=(const Vector& other) const {
+	if(v_size > other.v_size || this.v_size == other.v_size)
+	   return true;
+	return false;
+}
+
+
 #endif

@@ -13,6 +13,18 @@ int main() {
     vec1.push_back(30);
     vec1.pop_back();
     vec1.push_front(8);
+   
+
+    Vector<int> vec_1;
+	vec_1.push_back(1);
+	vec_1.push_back(2);
+	vec_1.push_back(7);
+	vec_1.push_back(9);
+
+	Vector<int> vec_2;
+	vec_2.push_back(1);
+	vec_2.push_back(2);
+	vec_2.push_back(4);
    /* vec2.clear();
     if (vec2.empty()) {
          std::cout << "vec2 is empty\n";
@@ -27,7 +39,13 @@ int main() {
     vec1.resize(5, 99);
     vec1.remove(2);
     vec1.insert(2, 42);*/
-    vec1.print();
+
+     if (vec_1 > vec_2) {
+        std::cout << "vec1 is greater than vec2" << std::endl;
+    } else {
+        std::cout << "vec1 is not greater than vec2" << std::endl;
+    }
+   // vec1.print();
 
     return 0;
 }
